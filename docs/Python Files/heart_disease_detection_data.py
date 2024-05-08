@@ -209,6 +209,7 @@ WomenWith55 = len(dfHeartDisease[(dfHeartDisease['Age'] > 55) & (dfHeartDisease[
 Men = len(df[(df['Age'] >= 45) & (df['Sex']=='M')])
 MenWith45 = len(dfHeartDisease[(dfHeartDisease['Age'] >= 45) & (dfHeartDisease['Sex']=='M')])
 
+#Checking the vLIDITI OF THE DATA WITH REAL LIFE PROOF FROM A DOCTOR
 print((MenWith45*100/Men))
 # #Resting BP check
 # BPcheckNormal = len(df[(df['RestingBP'] > 140)])
