@@ -303,3 +303,27 @@ plt.savefig('heart_disease_correlation_mat.png')
 plt.show()
 
 """As we can see in the corrrelation matrix there is no significant correlation among any feature in the dataset, **So it is essential to use all the Features for training.**"""
+
+
+"""
+I want to add a new feature called sex&gender to the df.
+these are my crossing features
+'Age' and 'Sex'
+'Age' is Numerical and 'Sex' is as 'M' and 'F'
+the bins are as follows:
+(0-30] Male as youngMale
+(30-45] Male as middleMale
+(45-60] Male as oldMale
+(60-80] Male as ElderlyMale
+(80-inf) Male as veryOldMale
+
+(0-30] Female as youngFemale
+(30-45) Female as middleFemale
+(45-60] Female as oldFemale
+(60-80] Female as ElderlyFemale
+(80-inf) Female as veryOldFemale
+
+
+
+
+"""
