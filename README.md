@@ -1,6 +1,6 @@
 
 # Heart Disease Prediction System
-
+![Logo](./docs/images/logo.jpg)
 ---
 
 <!-- 
