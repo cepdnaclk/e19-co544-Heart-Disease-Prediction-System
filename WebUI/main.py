@@ -1,6 +1,17 @@
 import gradio as gr
+from Demonstration_Final import heart_prediction_scratch
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import MinMaxScaler
 
-def heart_prediction(age, sec, chest_pain_type, resting_bp, cholesterol, fasting_bs, resting_ecg, max_hr, exercise_angina, oldpeak, st_slope, model):
+def is_heart_disease(value):
+        if value == 0:
+            return "Person is not having Heart Disease"
+        else:
+            return "Person is having Heart Disease"
+def heart_prediction(age, sex, chest_pain_type, resting_bp, cholesterol, fasting_bs, resting_ecg, max_hr, exercise_angina, oldpeak, st_slope, model,Index):
     sex = ["M", "F"][sex]
     resting_bp = float(resting_bp)
     cholesterol = float(cholesterol)
@@ -8,9 +19,10 @@ def heart_prediction(age, sec, chest_pain_type, resting_bp, cholesterol, fasting
     oldpeak = float(oldpeak)
 
     # TODO: Include necessary code to make a prediction using the provided parameters
-
+    x,y = heart_prediction_scratch(age, sex, chest_pain_type, resting_bp, cholesterol, fasting_bs, resting_ecg, max_hr, exercise_angina, oldpeak, st_slope,model,Index)
+    return is_heart_disease(x),is_heart_disease(y)
     # For now, the function simply returns "Hello"
-    return "Hello"
+    # return "Hello"
 
 # Create a GUI for the heart_prediction function using gr.Interface
 heart_prediction_gui = gr.Interface(
@@ -28,9 +40,13 @@ heart_prediction_gui = gr.Interface(
             gr.Textbox(label="Oldpeak"),
             gr.Radio(["Up", "Flat", "Down"], label="Slope of the peak exercise ST segment", info="Up: upsloping, Flat: flat, Down: downsloping"),
             gr.Dropdown(["Decision Tree Classifier", "Logistic Regression Classifier", "Random Forest Classifier", "SVM Classifier"], label="Model", type="index", info="Will add more models later!"),
+            gr.Slider(1, 811, value=1, label="Index to Test", info="Choose between 1 and 100")
             ],
 
-    outputs=["text"],
+    outputs=[
+        gr.Textbox(label="Model Prediction"), 
+        gr.Textbox(label="Actual Value")
+    ]
 )
 
 heart_prediction_gui.launch()

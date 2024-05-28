@@ -15,17 +15,17 @@ def get_inputs():
     global df
     
     # Get user inputs for each feature
-    # age = float(input("Enter Age: "))
-    # sex = input("Enter Sex (M/F): ")
-    # chest_pain_type = input("Enter Chest Pain Type (TA/ATA/NAP/ASY): ")
-    # resting_bp = float(input("Enter Resting Blood Pressure (mm Hg): "))
-    # cholesterol = float(input("Enter Cholesterol (mm/dl): "))
-    # fasting_bs = int(input("Enter Fasting Blood Sugar (1 if > 120 mg/dl, 0 otherwise): "))
-    # resting_ecg = input("Enter Resting ECG (Normal/ST/LVH): ")
-    # max_hr = float(input("Enter Maximum Heart Rate Achieved: "))
-    # exercise_angina = input("Enter Exercise Angina (Y/N): ")
-    # oldpeak = float(input("Enter Oldpeak (ST measured in depression): "))
-    # st_slope = input("Enter ST Slope (Up/Flat/Down): ")
+    age = float(input("Enter Age: "))
+    sex = input("Enter Sex (M/F): ")
+    chest_pain_type = input("Enter Chest Pain Type (TA/ATA/NAP/ASY): ")
+    resting_bp = float(input("Enter Resting Blood Pressure (mm Hg): "))
+    cholesterol = float(input("Enter Cholesterol (mm/dl): "))
+    fasting_bs = int(input("Enter Fasting Blood Sugar (1 if > 120 mg/dl, 0 otherwise): "))
+    resting_ecg = input("Enter Resting ECG (Normal/ST/LVH): ")
+    max_hr = float(input("Enter Maximum Heart Rate Achieved: "))
+    exercise_angina = input("Enter Exercise Angina (Y/N): ")
+    oldpeak = float(input("Enter Oldpeak (ST measured in depression): "))
+    st_slope = input("Enter ST Slope (Up/Flat/Down): ")
     
     # Hard coded values for testing
     age = 49
