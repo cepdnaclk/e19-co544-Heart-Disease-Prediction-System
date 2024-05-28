@@ -13,6 +13,7 @@ df = pd.read_csv('heart_done.csv')
 # Function to get user inputs for each feature
 def get_inputs():
     global df
+    
     # Get user inputs for each feature
     # age = float(input("Enter Age: "))
     # sex = input("Enter Sex (M/F): ")
@@ -25,6 +26,7 @@ def get_inputs():
     # exercise_angina = input("Enter Exercise Angina (Y/N): ")
     # oldpeak = float(input("Enter Oldpeak (ST measured in depression): "))
     # st_slope = input("Enter ST Slope (Up/Flat/Down): ")
+    
     # Hard coded values for testing
     age = 49
     sex = 'F'
@@ -203,13 +205,68 @@ result = pd.DataFrame(
 # Load the model from the file
 # model = load('random_forest_model.joblib')
 
+
+
 y_pred =  RandomForestModel.predict(X_input)
 
-print("Model Prediction : ", y_pred[0])
+def is_heart_disease(value):
+    if value == 0:
+        print("Person is not having Heart Disease")
+    else:
+        print("Person is having Heart Disease")
 
+print("Model Prediction : ")
+is_heart_disease(int(y_pred[0]))
+
+print("Actual Value : ")
 actual_value = int(input("Enter the Index: "))
-
-print(final_df.iloc[actual_value]['HeartDisease'])
-
+is_heart_disease(final_df.iloc[actual_value]['HeartDisease'])
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# from sklearn.model_selection import learning_curve
+
+# # Function to plot learning curve
+# def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None, n_jobs=None, train_sizes=np.linspace(.1, 1.0, 5)):
+#     plt.figure(figsize=(10, 6))
+#     plt.title(title)
+#     if ylim is not None:
+#         plt.ylim(*ylim)
+#     plt.xlabel("Training examples")
+#     plt.ylabel("Score")
+#     train_sizes, train_scores, test_scores = learning_curve(estimator, X, y, cv=cv, n_jobs=n_jobs, train_sizes=train_sizes)
+#     train_scores_mean = np.mean(train_scores, axis=1)
+#     train_scores_std = np.std(train_scores, axis=1)
+#     test_scores_mean = np.mean(test_scores, axis=1)
+#     test_scores_std = np.std(test_scores, axis=1)
+#     plt.grid()
+    
+#     plt.fill_between(train_sizes, train_scores_mean - train_scores_std, train_scores_mean + train_scores_std, alpha=0.1, color="r")
+#     plt.fill_between(train_sizes, test_scores_mean - test_scores_std, test_scores_mean + test_scores_std, alpha=0.1, color="g")
+#     plt.plot(train_sizes, train_scores_mean, 'o-', color="r", label="Training score")
+#     plt.plot(train_sizes, test_scores_mean, 'o-', color="g", label="Cross-validation score")
+#     plt.legend(loc="best")
+#     return plt
+
+# # Plot learning curve for Rf
+# plot_learning_curve(RandomForestModel, "Learning Curve (rf)", X_train, y_train, cv=5)
+# plt.show()

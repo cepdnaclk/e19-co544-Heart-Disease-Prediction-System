@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Heart Disease Prediction System</h1>
-  <img src="./docs/images/logo.jpg" alt="Logo" width="200"/>
+  <img src="./docs/images/logo.png" alt="Logo" width="1344"/>
 </div>
 
 ---
