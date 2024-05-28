@@ -1,5 +1,5 @@
 import gradio as gr
-from Demonstration_Final import heart_prediction_scratch
+from source.model_implementation import heart_prediction_scratch
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -11,18 +11,16 @@ def is_heart_disease(value):
             return "Person is not having Heart Disease"
         else:
             return "Person is having Heart Disease"
-def heart_prediction(age, sex, chest_pain_type, resting_bp, cholesterol, fasting_bs, resting_ecg, max_hr, exercise_angina, oldpeak, st_slope, model,Index):
+        
+def heart_prediction(age, sex, chest_pain_type, resting_bp, cholesterol, fasting_bs, resting_ecg, max_hr, exercise_angina, oldpeak, st_slope, model, Index):
     sex = ["M", "F"][sex]
     resting_bp = float(resting_bp)
     cholesterol = float(cholesterol)
     exercise_angina = ["Y", "N"][exercise_angina]
     oldpeak = float(oldpeak)
 
-    # TODO: Include necessary code to make a prediction using the provided parameters
     x,y = heart_prediction_scratch(age, sex, chest_pain_type, resting_bp, cholesterol, fasting_bs, resting_ecg, max_hr, exercise_angina, oldpeak, st_slope,model,Index)
     return is_heart_disease(x),is_heart_disease(y)
-    # For now, the function simply returns "Hello"
-    # return "Hello"
 
 # Create a GUI for the heart_prediction function using gr.Interface
 heart_prediction_gui = gr.Interface(
@@ -46,7 +44,14 @@ heart_prediction_gui = gr.Interface(
     outputs=[
         gr.Textbox(label="Model Prediction"), 
         gr.Textbox(label="Actual Value")
-    ]
+    ],
+    examples=[
+        [40,"Male","ATA",140,289.0,"< 120 mg/dl","Normal",172,"No",0.0,"Up","Decision Tree Classifier",0],
+        [49,"Female","NAP",160,180.0,"< 120 mg/dl","Normal",156,"No",1.0,"Flat","Logistic Regression Classifier",1],
+        [37,"Male","ATA",130,283.0,"< 120 mg/dl","ST",98,"No",0.0,"Up","Random Forest Classifier",2],
+        [48,"Female","ASY",138,214.0,"< 120 mg/dl","Normal",108,"Yes",1.5,"Flat","SVM Classifier",3],
+    ],
+    title="Heart Disease Prediction System"
 )
 
 heart_prediction_gui.launch()
