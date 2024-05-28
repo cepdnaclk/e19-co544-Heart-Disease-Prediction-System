@@ -138,7 +138,7 @@ def heart_prediction_scratch(age, sex, chest_pain_type, resting_bp, cholesterol,
     y = final_df['HeartDisease']
     X_train, X_test, y_train, y_test = train_test_split(X,y,stratify=y, test_size=.3, random_state=42)
 
-    print(model)
+    # print(model)
     # Creating The Model Selector
     selected_model = model_selector(model)
     
