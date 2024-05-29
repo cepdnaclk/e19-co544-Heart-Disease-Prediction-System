@@ -54,4 +54,4 @@ heart_prediction_gui = gr.Interface(
     title="Heart Disease Prediction System"
 )
 
-heart_prediction_gui.launch()
+heart_prediction_gui.launch(share=True)

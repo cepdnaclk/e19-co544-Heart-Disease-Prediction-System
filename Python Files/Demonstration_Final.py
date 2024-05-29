@@ -14,18 +14,18 @@ df = pd.read_csv('heart_done.csv')
 def get_inputs():
     global df
     
-    # Get user inputs for each feature
-    age = float(input("Enter Age: "))
-    sex = input("Enter Sex (M/F): ")
-    chest_pain_type = input("Enter Chest Pain Type (TA/ATA/NAP/ASY): ")
-    resting_bp = float(input("Enter Resting Blood Pressure (mm Hg): "))
-    cholesterol = float(input("Enter Cholesterol (mm/dl): "))
-    fasting_bs = int(input("Enter Fasting Blood Sugar (1 if > 120 mg/dl, 0 otherwise): "))
-    resting_ecg = input("Enter Resting ECG (Normal/ST/LVH): ")
-    max_hr = float(input("Enter Maximum Heart Rate Achieved: "))
-    exercise_angina = input("Enter Exercise Angina (Y/N): ")
-    oldpeak = float(input("Enter Oldpeak (ST measured in depression): "))
-    st_slope = input("Enter ST Slope (Up/Flat/Down): ")
+    # # Get user inputs for each feature
+    # age = float(input("Enter Age: "))
+    # sex = input("Enter Sex (M/F): ")
+    # chest_pain_type = input("Enter Chest Pain Type (TA/ATA/NAP/ASY): ")
+    # resting_bp = float(input("Enter Resting Blood Pressure (mm Hg): "))
+    # cholesterol = float(input("Enter Cholesterol (mm/dl): "))
+    # fasting_bs = int(input("Enter Fasting Blood Sugar (1 if > 120 mg/dl, 0 otherwise): "))
+    # resting_ecg = input("Enter Resting ECG (Normal/ST/LVH): ")
+    # max_hr = float(input("Enter Maximum Heart Rate Achieved: "))
+    # exercise_angina = input("Enter Exercise Angina (Y/N): ")
+    # oldpeak = float(input("Enter Oldpeak (ST measured in depression): "))
+    # st_slope = input("Enter ST Slope (Up/Flat/Down): ")
     
     # Hard coded values for testing
     age = 49
@@ -47,7 +47,7 @@ def get_inputs():
     df = df._append(input_row, ignore_index=True)
     
     
-
+3
 
 # Get user inputs
 get_inputs()
@@ -126,8 +126,8 @@ Encoded_df = Encoded_df.reset_index(drop=True)
 df_Mapped = df_Mapped.reset_index(drop=True)
 
 # Concatenating the dataframes
-final_df = pd.concat([scaled_df, Encoded_df, scaled_df], axis=1)
-
+final_df = pd.concat([scaled_df, Encoded_df, df_Mapped], axis=1)
+print(final_df.shape)
 # Adding the target column
 final_df['HeartDisease'] = df['HeartDisease'].reset_index(drop=True)
 

@@ -118,22 +118,15 @@ def heart_prediction_scratch(age, sex, chest_pain_type, resting_bp, cholesterol,
     # Remove the last row from the original DataFrame
     final_df = final_df.iloc[:-1]
 
-
-    
-
-
     X_input = input_data
 
 
     # Load the model
     from joblib import load
 
-    
- 
     # Split the data into input and target
     from sklearn.model_selection import train_test_split\
         
-    
     X = final_df.drop('HeartDisease', axis=1)
     y = final_df['HeartDisease']
     X_train, X_test, y_train, y_test = train_test_split(X,y,stratify=y, test_size=.3, random_state=42)
