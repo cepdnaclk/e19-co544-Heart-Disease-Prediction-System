@@ -9,8 +9,11 @@ numeric_columns = ['Age', 'RestingBP', 'Cholesterol','MaxHR', 'Oldpeak']
 features = ['Age', 'Sex', 'ChestPainType', 'RestingBP', 'Cholesterol', 'FastingBS', 'RestingECG', 'MaxHR', 'ExerciseAngina', 'Oldpeak', 'ST_Slope']
 
 df = pd.read_csv('heart_done.csv')
+print("Data Shape: ", df.shape)
+print()
 
 # Checking For imbalance
+print("Checking for imbalance in the target variable")
 print(df['HeartDisease'].value_counts().reset_index(name='Count'))
 print()
 
