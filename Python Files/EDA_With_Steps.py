@@ -10,13 +10,21 @@ features = ['Age', 'Sex', 'ChestPainType', 'RestingBP', 'Cholesterol', 'FastingB
 
 df = pd.read_csv('heart_done.csv')
 
+# Checking For imbalance
+print(df['HeartDisease'].value_counts().reset_index(name='Count'))
+print()
+
 # Separate the features and target variable
 X = df.drop('HeartDisease', axis=1)
 y = df['HeartDisease']
 
 # Split the data into training and testing sets
+print("Splitting the data into training and testing sets...")
+
 X_train, X_test, y_train, y_test = train_test_split(X,y,stratify=y, test_size=.2, random_state=42)
-print(X_train.shape, X_test.shape)
+print("Training set shape: ", X_train.shape)
+print("Testing set shape: ", X_test.shape)
+print()
 
 # For Feature Engineering
 def categorize_blood_pressure(RestingBP):
@@ -142,10 +150,10 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn import svm
 from sklearn.metrics import accuracy_score, roc_auc_score, f1_score 
+
+print('Base Models Evaluation')
 # Training the model
-models = [RandomForestClassifier(class_weight='balanced', criterion='entropy',
-                       max_features='log2', min_samples_leaf=2,
-                       min_samples_split=5),LogisticRegression(C=0.07742636826811278, l1_ratio=0.3, max_iter=2500, penalty='elasticnet', solver='saga', tol=0.01),svm.SVC(kernel='linear', gamma='auto', C=2),DecisionTreeClassifier()]
+models = [RandomForestClassifier(),LogisticRegression(),svm.SVC(),DecisionTreeClassifier()]
 
 
 acc_score = []
@@ -163,17 +171,17 @@ for model in models:
     #Testing the ROC
     roc_score.append(roc_auc_score(y_test, y_pred))
     #Tesing the F1 score
-    f1.append(f1_score(y_test, y_pred, average='weighted'))
+    f1.append(f1_score(y_test, y_pred))
     name_model.append(type(model).__name__)
 
 result = pd.DataFrame(
 {    'Model Name' : name_model,
      'accuracy': acc_score,
      'roc auc' : roc_score,
-     'f1-weighted' : f1}
+     'f1' : f1}
 )
 
-print(result.sort_values('f1-weighted',ascending=False))
+print(result.sort_values('f1',ascending=False))
 
 
 
