@@ -133,7 +133,8 @@ final_df_TE = pd.concat([scaled_df_TE, Encoded_df_TE, Mapped_df_TE], axis=1)
 
 # final_df_TE.to_csv('Testing_Set .csv', index=False)
 # final_df_TR.to_csv('Training_Set.csv', index=False)
-
+# y_train.to_csv('y_train.csv', index=False)
+# y_test.to_csv('y_test.csv', index=False)
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import RandomForestClassifier
