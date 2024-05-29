@@ -152,15 +152,24 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn import svm
-from sklearn.metrics import accuracy_score, roc_auc_score, f1_score 
+from sklearn.metrics import accuracy_score, roc_auc_score, f1_score, precision_score,recall_score
+from sklearn.model_selection import learning_curve
 
 print('Base Models Evaluation')
 # Training the model
-models = [RandomForestClassifier(),LogisticRegression(),svm.SVC(),DecisionTreeClassifier()]
+models = [RandomForestClassifier(),LogisticRegression(),svm.SVC(),DecisionTreeClassifier(criterion="entropy", 
+    splitter="best", 
+    max_depth=3, 
+    min_samples_split=4, 
+    min_samples_leaf=2, 
+    max_features="sqrt", 
+    random_state=42)]
 
 
 acc_score = []
 roc_score = []
+prec_score = []
+recall_score
 f1 = []
 name_model = []
 for model in models:
@@ -175,7 +184,9 @@ for model in models:
     roc_score.append(roc_auc_score(y_test, y_pred))
     #Tesing the F1 score
     f1.append(f1_score(y_test, y_pred))
+    
     name_model.append(type(model).__name__)
+    
 
 result = pd.DataFrame(
 {    'Model Name' : name_model,
@@ -185,6 +196,7 @@ result = pd.DataFrame(
 )
 
 print(result.sort_values('f1',ascending=False))
+
 
 
 
