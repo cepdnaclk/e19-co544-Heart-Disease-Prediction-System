@@ -19,7 +19,7 @@ X = df.drop('HeartDisease', axis=1)
 y = df['HeartDisease']
 
 # Split the data into training and testing sets
-print("Splitting the data into training and testing sets...")
+print("Splitting the data into training and testing sets(80% / 20%)")
 
 X_train, X_test, y_train, y_test = train_test_split(X,y,stratify=y, test_size=.2, random_state=42)
 print("Training set shape: ", X_train.shape)
