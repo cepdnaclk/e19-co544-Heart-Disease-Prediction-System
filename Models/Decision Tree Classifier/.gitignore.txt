@@ -1,0 +1,14 @@
+# Jupyter Notebook temporary files
+.ipynb_checkpoints/
+
+# Jupyter Notebook autosave files
+*.ipynb_checkpoints/
+
+# Jupyter Notebook kernel logs
+kernel-*.json
+
+# Jupyter Notebook HTML export files
+*.html
+
+# Jupyter Notebook Python script export files
+*.py
