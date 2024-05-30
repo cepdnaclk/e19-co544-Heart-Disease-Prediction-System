@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import OneHotEncoder
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler,StandardScaler
 from sklearn.model_selection import train_test_split\
 
 numeric_columns = ['Age', 'RestingBP', 'Cholesterol','MaxHR', 'Oldpeak']
@@ -142,10 +142,11 @@ final_df_TR = pd.concat([scaled_df_TR, Encoded_df_TR, Mapped_df_TR], axis=1)
 # Concatenating the test dataframes
 final_df_TE = pd.concat([scaled_df_TE, Encoded_df_TE, Mapped_df_TE], axis=1)
 
-# final_df_TE.to_csv('Testing_Set .csv', index=False)
-# final_df_TR.to_csv('Training_Set.csv', index=False)
-# y_train.to_csv('y_train.csv', index=False)
-# y_test.to_csv('y_test.csv', index=False)
+# print(final_df_TE.describe())
+final_df_TE.to_csv('Testing_Set .csv', index=False)
+final_df_TR.to_csv('Training_Set.csv', index=False)
+y_train.to_csv('y_train.csv', index=False)
+y_test.to_csv('y_test.csv', index=False)
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import RandomForestClassifier
@@ -195,7 +196,7 @@ result = pd.DataFrame(
      'f1' : f1}
 )
 
-print(result.sort_values('f1',ascending=False))
+# print(result.sort_values('f1',ascending=False))
 
 
 
